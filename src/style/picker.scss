@@ -1,6 +1,21 @@
 main {
 	grid-column: 5/-1;
-	grid-row: 2/4;
+	grid-row: 2/4; // background-color: cornflowerblue;
+	padding-bottom: 50px;
 
-	background-color: cornflowerblue;
+	input {
+		border: none;
+		background-color: transparent;
+		border-bottom: 2px solid #E3B924;
+
+		font-size: 80px;
+		font-family: 'Roboto Condensed';
+		font-weight: bold;
+		color: $grey;
+		text-align: center;
+
+		&:focus {
+			outline: none;
+		}
+	}
 }
