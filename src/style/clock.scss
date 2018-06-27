@@ -1,0 +1,13 @@
+.clock {
+	--clockShape: polygon(7% 0, 100% 0, 93% 100%, 0 100%);
+
+	grid-column: 2/11;
+	grid-row: 3/4;
+
+	background-color: $grey;
+	height: 80%;
+	align-self: end;
+
+	clip-path: var(--clockShape);
+	-webkit-clip-path: var(--clockShape);
+}
