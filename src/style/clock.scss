@@ -1,13 +1,43 @@
 .clock {
 	--clockShape: polygon(7% 0, 100% 0, 93% 100%, 0 100%);
 
-	grid-column: 2/11;
+	grid-column: 2/10;
 	grid-row: 3/4;
+	align-self: end;
 
 	background-color: $grey;
-	height: 80%;
-	align-self: end;
+	height: 85%;
+	width: 100%;
 
 	clip-path: var(--clockShape);
 	-webkit-clip-path: var(--clockShape);
+
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(150px, 275px)); // grid-column-gap: 80px;
+	align-items: center;
+	justify-items: center;
+
+	justify-content: center;
+	align-content: center;
+
+	font-family: 'Roboto Condensed';
+
+	&__title {
+		font-size: 22px;
+		line-height: 25px;
+		color: $yellow;
+	}
+	&__amount {
+		font-size: 90px;
+		font-weight: bold;
+		line-height: 115px;
+		color: white;
+	}
+
+	div {
+		// instead of adding "clock__box"
+		margin-top: 24px;
+		display: flex;
+		flex-direction: column;
+	}
 }

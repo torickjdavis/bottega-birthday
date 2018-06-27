@@ -1,6 +1,7 @@
 $lightBlue: #5496E6;
 $darkBlue: #518BDE;
 $grey: #444444;
+$yellow: #F7D754;
 
 .grid {
 	height: 100vh;
@@ -8,7 +9,7 @@ $grey: #444444;
 
 	display: grid;
 	grid-template-rows: repeat(4, minmax(200px, 1fr));
-	grid-template-columns: repeat(11, minmax(158px, 1fr));
+	grid-template-columns: repeat(11, minmax(150px, 1fr));
 
 	h1 {
 		grid-row: 1/2;
