@@ -14,9 +14,10 @@ export default class App extends Component {
 
   renderItems = function() {
     if (this.state.active) {
-      <Clock />
+      return (<Clock />);
     }
-    else { { Button(`Generate Countdown`, () => this.setState({ active: true })) }
+    else {
+      return Button('Generate Countdown', () => this.setState({ active: true }));
     }
   }.bind(this);
 
