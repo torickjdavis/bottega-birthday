@@ -1,7 +1,10 @@
 $lightBlue: #5496E6;
 $darkBlue: #518BDE;
+$lightGrey: #E6E6E6;
 $grey: #444444;
 $yellow: #F7D754;
+$roboto: 'Roboto Condensed';
+$monts: 'Montserrat';
 
 .grid {
 	height: 100vh;
@@ -18,8 +21,21 @@ $yellow: #F7D754;
 		font-size: 24px;
 		padding: 55px 75px;
 		color: white;
-		font-family: 'Montserrat';
+		font-family: $monts;
 		font-weight: 300;
 		line-height: 22px;
+	}
+
+	&__remaining {
+		grid-column: 1/-1;
+		grid-row: 4/-1;
+
+		margin-top: 33px;
+
+		text-align: center;
+		color: $grey;
+		font-family: $monts;
+		font-size: 22px;
+		font-weight: 300;
 	}
 }
