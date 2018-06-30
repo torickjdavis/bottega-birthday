@@ -34,7 +34,7 @@ export default class App extends Component {
 
   handleGenerate = function() {
     var birthday = this.state.startDate.toDate();
-    var today = new Date();
+    var today = moment().toDate();
 
     var timeBetween = today.getTime() - birthday.getTime();
     var daysOld = Math.floor(timeBetween / (1000 * 60 * 60 * 24));
