@@ -17,10 +17,15 @@ export default class App extends Component {
     };
   }
 
+  handleChange = function(date) {
+    console.log("APP JS HANDLE CHANGE ", date._d);
+    this.setState({ startDate: date });
+  }.bind(this);
+
   handleGenerate = function() {
     this.setState({ active: true });
 
-    var countDowndate = new Date("Sep 5, 2018 15:37:25").getTime();
+    var countDowndate = this.state.startDate.toDate().getTime();
 
     var x = setInterval(() => {
       //get today
@@ -29,7 +34,7 @@ export default class App extends Component {
       var distance = countDowndate - now;
 
       var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60));
+      var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
       var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
@@ -54,7 +59,7 @@ export default class App extends Component {
     }
     else {
       return [
-        <Picker />,
+        <Picker callback={(date) => this.handleChange(date)}/>,
         Button('Generate Countdown', () => this.handleGenerate())
       ];
     }
