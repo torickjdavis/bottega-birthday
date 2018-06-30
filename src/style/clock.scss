@@ -13,7 +13,7 @@
 	-webkit-clip-path: var(--clockShape);
 
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(150px, 275px)); // grid-column-gap: 10px; // removed due to screen density
+	grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); // grid-column-gap: 10px; // removed due to screen density
 	align-items: center;
 	justify-items: center;
 
