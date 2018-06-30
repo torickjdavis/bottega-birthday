@@ -13,8 +13,16 @@ export default class App extends Component {
 
     this.state = {
       active: false,
-      startDate: moment()
+      startDate: moment(),
+      timeRemaining: {
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 0
+      }
     };
+
+    this.timer = 0;
   }
 
   handleChange = function(date) {
@@ -27,7 +35,7 @@ export default class App extends Component {
 
     var countDowndate = this.state.startDate.toDate().getTime();
 
-    var x = setInterval(() => {
+    this.timer = setInterval(function() {
       //get today
 
       var now = new Date().getTime();
@@ -38,20 +46,26 @@ export default class App extends Component {
       var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      const time = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-      console.log(time);
+      this.setState({
+        timeRemaining: {
+          days, // is ES6 for days: days. This works because they are the same name
+          hours,
+          minutes,
+          seconds
+        }
+      });
 
       if (distance < 0) { // if the countdown is over, stop
-        clearInterval(x);
+        clearInterval(this.timer);
       }
-    }, 1000); // 1000ms (aka 1s)
+    }.bind(this), 1000); // 1000ms (aka 1s)
   }.bind(this);
 
 
   renderItems = function() {
     if (this.state.active) {
       return [
-        <Clock />,
+        <Clock timeRemaining={this.state.timeRemaining}/>,
         ChangeDate('Change Date', () => this.setState({ active: false })),
         LargeText('04/03'),
         <label className="grid__remaining">Remaining until your num-th birthday!</label>
@@ -59,7 +73,7 @@ export default class App extends Component {
     }
     else {
       return [
-        <Picker callback={(date) => this.handleChange(date)}/>,
+        <Picker startDate={this.state.startDate} callback={(date) => this.handleChange(date)}/>,
         Button('Generate Countdown', () => this.handleGenerate())
       ];
     }
