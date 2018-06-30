@@ -34,12 +34,34 @@ export default class App extends Component {
   handleGenerate = function() {
     this.setState({ active: true });
 
-    var countDowndate = this.state.startDate.toDate().getTime();
+    var birthday = this.state.startDate.toDate();
+    var today = new Date();
+    var currentMonth = today.getMonth();
+    var birthMonth = birthday.getMonth();
+
+    if (birthMonth > currentMonth) {
+      birthday.setFullYear(today.getFullYear());
+    }
+    else if (birthMonth < currentMonth) {
+      birthday.setFullYear(today.getFullYear() + 1);
+    }
+    else if (birthMonth == currentMonth) {
+      var currentDate = today.getDate();
+      var birthdayDate = birthday.getDate();
+
+      if (birthdayDate > currentDate) {
+        birthday.setFullYear(today.getFullYear());
+      }
+      else if (birthdayDate <= currentDate) {
+        birthday.setFullYear(today.getFullYear() + 1);
+      }
+    }
+
+    var countDowndate = birthday.getTime();
 
     this.timer = setInterval(function() {
-      //get today
 
-      var now = new Date().getTime();
+      var now = today.getTime();
       var distance = countDowndate - now;
 
       var days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -59,7 +81,7 @@ export default class App extends Component {
       if (distance < 0) { // if the countdown is over, stop
         clearInterval(this.timer);
       }
-    }.bind(this), 1000); // 1000ms (aka 1s)
+    }.bind(this), 1000);
   }.bind(this);
 
 
