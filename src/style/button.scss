@@ -1,4 +1,5 @@
-button {
+.button {
+	// changed from tag selector because of ReactDatePicker css.
 	--buttonShape: polygon(7% 0, 100% 0, 93% 100%, 0 100%);
 
 	grid-column: 6/9;
